@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>add stock</h3>
+<br/>
+ <form action="{% url 'add_stock' %}" class="form-inline my-2 my-lg-0" method="POST">
+        {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="Add to portfolio" aria-label="Search" name="ticker">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add stock</button>
+    </form>
+
+<br/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead >
+    <tr>
+      <th scope="col">Company Name</th>
+      <th scope="col">primary exchange</th>
+      <th scope="col">calculation Price</th>
+      <th scope="col">open Time</th>
+      <th scope="col">previous Volume</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% if ticker %}
+
+  <tr>
+      {% for list_item in output %}
+      <tr>
+     <th scope="row">{{list_item.companyName }}</th>
+      <td>{{list_item.primaryExchange}}</td>
+      <td> {{list_item.calculationPrice}}</td>
+      <td>{{list_item.openTime}}</td>
+       <td>{{list_item.previousVolume}}</td>
+
+  </tr>
+      {% endfor %}
+
+
+
+
+
+
+
+  </tbody>
+</table>
+{% endif %}
+
+
+
+
+<br/><br/>
+
+
+{% endblock %}

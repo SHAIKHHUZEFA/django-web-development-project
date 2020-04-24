@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if ticker %}
+   {{ticker}}
+{% endif %}
+{% if api %}
+     {% if api == "error.." %}
+       there was a problem
+     {% else %}
+   <h1>{{ api.companyName }}</h1><br/>
+   primary exchange:{{api.primaryExchange}}<br/>
+   calculation Price:{{api.calculationPrice}}<br/>
+   open Time:{{api.openTime}}<br/>
+   previousVolume:{{api.previousVolume}}<br/>
+
+ {% endif %}
+{% endif %}
+{% endblock %}
